@@ -243,21 +243,22 @@ git config --global core.editor "'D:\Notepad++\notepad++.exe' -multiInst -notabb
 ##### 4.合并分支 `git merge`
 
         1. 切换到接受修改的分支上（想要加新内容的分支 例如：master
-        2. 执行`git merge [另一个分支名]` 新内容的分支   例如 ：hot_fix
+        2. 执行`git merge [另一个分支名] （新内容的分支   例如 ：hot_fix
 
-##### 5.解决冲突 `git branch -v`
+##### 5.解决冲突 
 
    1.进入文件，删除git自动添加的符合，修改文件到想要的状态，保存并退出。
 
-2. git add [文件名]
-
-   3.git commit -m “日志信息” ，然后后面不能带文件名。
+2. git add [文件名]  （此步骤可省略）
+3. git commit -m “日志信息” ，然后后面不能带文件名。
 
 
 
 
 
 # GitHub
+
+## 团队间协作
 
 ##### 步骤：
 
@@ -273,6 +274,12 @@ git config --global core.editor "'D:\Notepad++\notepad++.exe' -multiInst -notabb
 
   `git push  [别名] [分支名]` 完成推送，到GitHub上对应仓库即可看
 
+   推送到远程库和提交到本地库的区别： 
+
+​     1)、远程库较为麻烦 因此是以分支为单位
+
+​     2)、提交到本地库是以单个文件为单位 
+
 4.克隆操作
 
    1）新建一个目录。
@@ -287,13 +294,11 @@ git config --global core.editor "'D:\Notepad++\notepad++.exe' -multiInst -notabb
 
 ​          3.初始化本地库（相当于git init 生成.git文件夹
 
-克隆后修改文件 提交到本地库  
+克隆到本地后正常操作编辑、修改文件， 提交到本地库。 然后推送到远程库
 
 5.加入团队（不然无法推送到远程）
 
   远程库中 点击settings ---> 点击collaborators --->输入完整名称或者邮件地址    加入团队后 可以按照第三步完成推送。
-
-
 
 
 
@@ -323,11 +328,11 @@ pull = fetch + merge
 
 因此 先pull 然后解决冲突 完成merge。
 
-在此之后就正常的提交到本地库  再 push到远程库。
+在此之后就正常的提交到本地库  再 push到远程库。（也就是说，将原本、自己的修改、期间其他人修改后又push到远程的三个版本进行合并 原本---->修改后的远程---->加上自己的然后push）
 
 
 
-注： 注意区别 本地库分支之间的冲突和 远程库版本非最新引起的冲突直接的差别
+注： 注意区别 本地库分支之间的冲突（相同地方的进行的不同修改）和远程库版本由非最新引起的冲突直接的差别。
 
 
 
@@ -349,7 +354,7 @@ fork  新建 （复制）自己的远程库 然后clone到本地。修改 ，提
 
 ### SSH免密登录
 
-`ssh-keygen -t rsa -C [远程zhanghao]`   
+`ssh-keygen -t rsa -C [远程账号地址]`   
 
 生成ssh-key 将pub里的key添加到GitHub上，
 
