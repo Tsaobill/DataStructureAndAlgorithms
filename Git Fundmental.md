@@ -333,7 +333,13 @@ pull = fetch + merge
 
 
 
+## 跨团队协作操作演示
 
+### fork + pull request 操作 
+
+fork  新建 （复制）自己的远程库 然后clone到本地。修改 ，提交 
+
+发起pull request操作 等待审核 ，完成 审核后 进行merge 
 
 
 
