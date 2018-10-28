@@ -347,3 +347,21 @@ fork  新建 （复制）自己的远程库 然后clone到本地。修改 ，提
 
 
 
+### SSH免密登录
+
+`ssh-keygen -t rsa -C [远程zhanghao]`   
+
+生成ssh-key 将pub里的key添加到GitHub上，
+
+打开GitHub远程库， 点击克隆或者下载，改成ssh。复制给出的地址
+
+在gitbash中 git remote add 【别名_ssh】[远程库的ssh地址]
+
+下次提交 git push 【别名_ssh】[分支名] 就不用输入账号和密码了
+
+
+
+
+
+
+
