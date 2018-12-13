@@ -1,0 +1,81 @@
+
+QuickSort(A, p, r){
+	if(p < r){
+		q = Partition(A, p, r);
+		QuickSort(A, p, q - 1);
+		QuickSort(A, q + 1, p);
+	}
+}
+//为了排序整个数组，初始调用QuickSort(A, 0, A.length)
+// 平均运行时间：nlogn
+// 最坏：1、每次划分成 n-1 和 0 两种情况，2、原数组为有序数组时，仍然是最坏情况
+
+//其中，Partition算法如下：
+//一、前后指针，一般选择最后一个当主元(实现方便，如果加了随机预处理选择不会影响)
+    public static int partition(int[] a, int p, int q) {
+        int i = p - 1;
+        int v = a[q];
+        for (int j = p; j < q; j++) {
+            if (a[j] <= v) {
+                swap(a, ++i, j);
+            }
+        }
+        swap(a, q, i + 1);
+        return i + 1;
+    }
+
+//二、左右指针，左右指针法只能针对顺序表进行，如果针对链表排序，就只能用前后指针
+	private static int partiton(int[] a, int lo, int hi){
+		int i = lo;
+		int j = hi + 1;
+		// int r = rand(lo,hi); 
+		// swap(a,lo,r);
+		int v = a[lo];
+		while(true){
+			while(a[++i] < v)if(i == hi) break;
+			while(a[--j] > v);
+			if(i >= j) break;
+			swap(a, i , j);
+		}
+		swap(a, lo, j);
+		return j;
+	}
+
+
+    private static int patition(int[] arr, int left, int right) {
+        //左右指针法
+        int temp = left;
+        while (left < right) {
+            //从右边开始找到比主键值a[0]小的值，移到左边
+            while (left < right && arr[right] >= arr[temp]) right--;
+            //从左边开始找到比主键值a[0]大的值，移到右边
+            while (left < right && arr[left] <= arr[temp]) left++;
+            swap(arr, left, right);
+        }
+        //最终将基准数归位
+        swap(arr, temp, right);
+        return right;
+    }
+
+//3 way quickSort
+private static void sort(int[] a, int lo, int hi) {
+	if (hi <= lo) {
+		return;
+	}
+	int lt = lo, i = lo + 1, gt = hi;
+	int v = a[lo];
+	while (i <= gt) {
+		if (a[i] < v) {
+			swap(a, lt++, i++);
+		} else if (a[i] > v) {
+			swap(a, i, gt--);
+		} else {
+			i++;
+		}
+	}
+	sort(a, lo, lt - 1);
+	sort(a, gt + 1, hi);
+}
+
+
+
