@@ -27,19 +27,20 @@ public static int part1(int[] arr, int lo, int hi) {
 *优点：碰到相等的时候不停，这样就少做不必要的交换
 *缺点：因此如果输入数字元素全部相等时间复杂度则会降到n方
 */
-private static int part2(int[] arr, int left, int right) {
-    int temp = left;
-    while (left < right) {
-        while (left < right && arr[right] >= arr[temp]) {
-            right--;
+private static int part2(int[] arr, int lo, int hi) {
+    int v = arr[lo];
+    while (lo < hi) {
+        while (lo < hi && arr[hi] >= v) {
+            hi--;
         }
-        while (left < right && arr[left] <= arr[temp]) {
-            left++;
+        arr[lo] = arr[hi];
+        while (lo < hi && arr[lo] <= v) {
+            lo++;
         }
-        swap(arr, left, right);
+        arr[hi] = arr[lo];
     }
-    swap(arr, temp, right);
-    return right;
+    arr[hi] = v;
+    return hi;
 }
 
 /**
